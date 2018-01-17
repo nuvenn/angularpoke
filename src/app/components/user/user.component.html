@@ -1,36 +1,42 @@
-<h2>{{ title }}</h2>
-<h2>{{ name }}</h2>
-<ul>
-  <li>Age: {{ age }}</li>
-  <li>Email: {{ email }}</li>
-  <li>Address: {{ address.street }}</li>
-</ul>
+<div class="text-center">
+  <h2>{{ title }}</h2>
+  <h2>{{ name }}</h2>
+  <ul>
+    <li>Age: {{ age }}</li>
+    <li>Email: {{ email }}</li>
+    <li>Address: {{ address.street }}</li>
+  </ul>
 
-<h2>Edit User</h2>
-<form>
-  <div>
-    <input type="text" [(ngModel)]="name" name="name" placeholder="Name">
-    <input type="text" [(ngModel)]="age" name="age" placeholder="Age">
-    <input type="text" [(ngModel)]="email" name="email" placeholder="Email">
-    <input type="text" [(ngModel)]="address.street" name="address.street" placeholder="Street">
+  <h2>Edit User</h2>
+  <form>
+    <div>
+      <input type="text" [(ngModel)]="name" name="name" placeholder="Name">
+      <input type="text" [(ngModel)]="age" name="age" placeholder="Age">
+      <input type="text" [(ngModel)]="email" name="email" placeholder="Email">
+      <input type="text" [(ngModel)]="address.street" name="address.street" placeholder="Street">
+    </div>
+  </form>
+
+  <h2>Hob</h2>
+  <form (submit)="addHobby(hobby)">
+    <div>
+      <input type="text" [(ngModel)]="hobby" name="hobby" placeholder="Insert a hobby"> 
+    </div>
+  </form>
+  <ul>  
+    <li *ngFor="let hobbie of hobbies; let i = index">
+      {{ i + 1 }} - {{ hobbie }} <button (click)="deleteHobby(i)">Delete</button>
+    </li>
+  </ul>
+
+  <h2>Posts</h2>
+  <div *ngFor="let post of posts">
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title">{{ post.id }} - {{ post.title }}</h4>
+        <p class="card-text">{{ post.body }}</p>
+      </div>
+    </div>
+    <br>
   </div>
-</form>
-
-<h2>Hob</h2>
-<form (submit)="addHobby(hobby)">
-  <div>
-    <input type="text" [(ngModel)]="hobby" name="hobby" placeholder="Insert a hobby"> 
-  </div>
-</form>
-<ul>  
-  <li *ngFor="let hobbie of hobbies; let i = index">
-    {{ i + 1 }} - {{ hobbie }} <button (click)="deleteHobby(i)">Delete</button>
-  </li>
-</ul>
-
-<h2>Posts</h2>
-
-<div *ngFor="let post of posts">
-  <h4>{{ post.id }} - {{ post.title }}</h4>
-  <h5>{{ post.body }}</h5>
 </div>
