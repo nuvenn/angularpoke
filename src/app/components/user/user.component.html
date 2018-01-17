@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="container-page">
   <h2>{{ title }}</h2>
   <h2>{{ name }}</h2>
   <ul>
@@ -9,25 +9,39 @@
 
   <h2>Edit User</h2>
   <form>
-    <div>
-      <input type="text" [(ngModel)]="name" name="name" placeholder="Name">
-      <input type="text" [(ngModel)]="age" name="age" placeholder="Age">
-      <input type="text" [(ngModel)]="email" name="email" placeholder="Email">
-      <input type="text" [(ngModel)]="address.street" name="address.street" placeholder="Street">
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input class="form-control" type="text" [(ngModel)]="name" name="name" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="Age">Age</label>
+      <input class="form-control" type="text" [(ngModel)]="age" name="age" placeholder="Age">
+    </div>
+    <div class="form-group">
+      <label for="Email">Email</label>
+      <input class="form-control" type="text" [(ngModel)]="email" name="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="Street">Street</label>
+      <input class="form-control" type="text" [(ngModel)]="address.street" name="address.street" placeholder="Street">
     </div>
   </form>
 
   <h2>Hob</h2>
   <form (submit)="addHobby(hobby)">
     <div>
-      <input type="text" [(ngModel)]="hobby" name="hobby" placeholder="Insert a hobby"> 
+      <input class="form-control" type="text" [(ngModel)]="hobby" name="hobby" placeholder="Insert a hobby"> 
     </div>
   </form>
-  <ul>  
-    <li *ngFor="let hobbie of hobbies; let i = index">
-      {{ i + 1 }} - {{ hobbie }} <button (click)="deleteHobby(i)">Delete</button>
-    </li>
-  </ul>
+  <table class="table table-inverse">
+    <tbody>
+      <tr *ngFor="let hobbie of hobbies; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ hobbie }}</td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteHobby(i)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
 
   <h2>Posts</h2>
   <div *ngFor="let post of posts">
