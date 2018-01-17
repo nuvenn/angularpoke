@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { state } from '@angular/core/src/animation/dsl';
 import { DataService } from '../../services/data.service';
+import { Posts } from '../../interfaces/posts';
 
 @Component({
   selector: 'app-user',
@@ -21,7 +22,7 @@ export class UserComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.title = 'Users';
+    this.title = 'User';
     this.name = '';
     this.hobbies = ['Play music', 'Rowing', 'Programming'];
     this.address = {
@@ -50,11 +51,4 @@ interface Address {
   street: string,
   city: string,
   state: string
-}
-
-interface Posts {
-  userId: number,
-  id: number,
-  title: string,
-  body: string
 }
