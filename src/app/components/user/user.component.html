@@ -1,49 +1,34 @@
 <div class="container-page">
 
+  <h2>Search for a user</h2>
   <div class="row">
     <div class="col-sm">
-      <input class="form-control" type="text" name="user" placeholder="Search a user...">
+      <div class="form-group">
+        <select class="form-control" [(ngModel)]="userActive" id="userActive">
+          <option *ngFor="let user of users" [ngValue]="user"> {{ user.name }} </option>
+        </select>
+      </div>
     </div>
     <div class="col-sm">
       
     </div>
   </div>
-  <br>
-  <div class="row">
-    <div class="col-sm">
-      <div class="card" style="width: 10rem; height: 10rem">
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Name: {{ name }}</li>
-          <li class="list-group-item">Age: {{ age }}</li>
-          <li class="list-group-item">Email: {{ email }}</li>
-          <li class="list-group-item">Address: {{ address.street }}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-6">
 
-    </div>
-  </div>
-  <br>
-  <div class="row">
+  <div class="row" *ngIf="userActive">
     <div class="col-sm">
       <h2>Edit User</h2>
       <form>
         <div class="form-group">
-          <input class="form-control" type="text" [(ngModel)]="name" name="name" placeholder="Name">
+          <input class="form-control" type="text" [(ngModel)]="userActive.name" name="name" placeholder="Name">
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" [(ngModel)]="age" name="age" placeholder="Age">
+          <input class="form-control" type="text" [(ngModel)]="userActive.email" name="age" placeholder="Email">
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" [(ngModel)]="email" name="email" placeholder="Email">
+          <input class="form-control" type="text" [(ngModel)]="userActive.phone" name="email" placeholder="Phone">
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" [(ngModel)]="address.street" name="address.street" placeholder="Street">
+          <input class="form-control" type="text" [(ngModel)]="userActive.website" name="website" placeholder="Website">
         </div>
         <button type="button" class="btn btn-success">Save</button>
       </form>

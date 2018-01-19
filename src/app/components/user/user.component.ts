@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
   hobby: string;
   hobbies: string[];
   users: User[];
+  userActive: User;
 
   constructor(private usersService: UsersService) { }
 
