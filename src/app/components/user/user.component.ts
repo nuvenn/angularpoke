@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { state } from '@angular/core/src/animation/dsl';
 import { DataService } from '../../services/data.service';
-import { Posts } from '../../interfaces/posts';
+import { UsersService } from '../../services/users.service';
+import { Address } from '../../interfaces/address';
 
 @Component({
   selector: 'app-user',
@@ -17,9 +18,9 @@ export class UserComponent implements OnInit {
   address: Address;
   hobby: string;
   hobbies: string[];
-  posts: Posts;
+  users: User[];
 
-  constructor(private dataService: DataService) { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
     this.title = 'User';
@@ -30,8 +31,9 @@ export class UserComponent implements OnInit {
       city: '',
       state: ''
     }
-    this.dataService.getPosts().subscribe((posts) => {
-      this.posts = posts;
+    this.usersService.getUsers().subscribe((users) => {
+      console.log(users);
+      this.users = users;
     });
   }
 
@@ -47,8 +49,32 @@ export class UserComponent implements OnInit {
 
 }
 
-interface Address {
+interface User {
+  id: number,
+  name: string,
+  username: string,
+  email: string,
+  address: Address2,
+  phone: string,
+  website: string,
+  company: Company
+}
+
+interface Company {
+  name: string,
+  catchPhrase: string,
+  bs: string
+}
+
+interface Address2 {
   street: string,
+  suite: string,
   city: string,
-  state: string
+  zipcode: string,
+  geo: Geo
+}
+
+interface Geo {
+  lat: string,
+  lng: string
 }
