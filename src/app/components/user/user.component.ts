@@ -12,10 +12,6 @@ import { Address } from '../../interfaces/address';
 export class UserComponent implements OnInit {
 
   title: string;
-  name: string;
-  email: string;
-  age: number;
-  address: Address;
   hobby: string;
   hobbies: string[];
   users: User[];
@@ -25,15 +21,8 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.title = 'User';
-    this.name = '';
     this.hobbies = ['Play music', 'Rowing', 'Programming'];
-    this.address = {
-      street: '',
-      city: '',
-      state: ''
-    }
     this.usersService.getUsers().subscribe((users) => {
-      console.log(users);
       this.users = users;
     });
   }
