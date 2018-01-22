@@ -9,6 +9,8 @@ import { UserComponent } from './components/user/user.component';
 import { DataService } from './services/data.service';
 import { AdmComponent } from './components/adm/adm.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes = [
   { path: '', component: UserComponent },
@@ -27,6 +29,8 @@ const appRoutes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
+    SimpleNotificationsModule.forRoot(),
+    BrowserAnimationsModule,
     HttpModule
   ],
   providers: [ DataService ],

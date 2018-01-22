@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { state } from '@angular/core/src/animation/dsl';
 import { DataService } from '../../services/data.service';
 import { Address } from '../../interfaces/address';
+import { NotificationsService, SimpleNotificationsComponent, Options} from 'angular2-notifications';
 
 @Component({
   selector: 'app-user',
@@ -10,16 +11,18 @@ import { Address } from '../../interfaces/address';
 })
 export class UserComponent implements OnInit {
 
-  title: string;
   hobby: string;
   hobbies: string[];
   users: User[];
-  userActive: User;
+  userActive: {};
+  userShow: boolean;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+              private notificationService: NotificationsService) { }
 
   ngOnInit() {
-    this.title = 'User';
+    this.userShow = false;
+    this.userActive = {};
     this.hobbies = ['Play music', 'Rowing', 'Programming'];
     this.dataService.getAll('https://jsonplaceholder.typicode.com/users').subscribe((users) => {
       this.users = users;
@@ -27,20 +30,22 @@ export class UserComponent implements OnInit {
   }
 
   putUser(user: User) {
-    console.log(user);
     this.dataService.putData('https://jsonplaceholder.typicode.com/posts/' + user.id, user).subscribe((users) => {
-     
+      this.notificationService.success('Success update', null, {id: 123}); 
     });
   }
 
-  addHobby(hobby) {
-    this.hobbies.push(hobby);
-    this.hobby = '';
-    return false;
+  setClickedRow(user) {
+    this.userActive = user;
+    this.userShow = true;
   }
 
-  deleteHobby(index) {
-    this.hobbies.splice(index, 1);
+  deleteUser(index, user) {   
+    this.dataService.deleteData('https://jsonplaceholder.typicode.com/posts/' + user.id).subscribe((users) => {
+      this.notificationService.success('Success delete', null, {id: 123});
+      this.users.splice(index, 1); 
+      this.userActive = {};
+    });
   }
 
 }

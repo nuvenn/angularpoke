@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map'
 export class DataService {
 
   constructor(public http: Http) {
-    console.log('DataService working...');
+  
   }
 
   getAll(url){
@@ -25,6 +25,13 @@ export class DataService {
 
   putData(url, data){
     return this.http.put(url, data)
+      .map(function(res){
+        return res.json();  
+      });
+  }
+
+  deleteData(url){
+    return this.http.delete(url)
       .map(function(res){
         return res.json();  
       });

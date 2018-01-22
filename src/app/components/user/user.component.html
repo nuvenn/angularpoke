@@ -1,22 +1,21 @@
 <div class="container-page">
-
-  <p>Search for a user</p>
+  <h3>/users</h3>
   <div class="row">
     <div class="col-sm">
-      <div class="form-group">
-        <select class="form-control" [(ngModel)]="userActive" id="userActive">
-          <option *ngFor="let user of users" [ngValue]="user"> {{ user.name }} </option>
-        </select>
-      </div>
+      <table class="table table-striped table-inverse table-sm table-hover">
+        <tbody>
+          <tr *ngFor="let user of users;  let i = index" (click)="setClickedRow(user)">
+            <th scope="row"> {{ i + 1 }} </th>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="deleteUser(i, user)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="col-sm">
-
-    </div>
-  </div>
-
-  <div class="row" *ngIf="userActive">
-    <div class="col-sm">
-      <p>Edit User</p>
       <form>
         <div class="form-group">
           <input class="form-control" type="text" [(ngModel)]="userActive.id" name="id" placeholder="Id">
@@ -36,24 +35,6 @@
         <button type="button" class="btn btn-success" (click)="putUser(userActive)">Save</button>
       </form>
     </div>
-    <div class="col-sm">
-      <p>Interest</p>
-      <form (submit)="addHobby(hobby)">
-        <div>
-          <input class="form-control" type="text" [(ngModel)]="hobby" name="hobby" placeholder="Insert a interest">
-        </div>
-      </form>
-      <table class="table table-inverse">
-        <tbody>
-          <tr *ngFor="let hobbie of hobbies; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ hobbie }}</td>
-            <td>
-              <button type="button" class="btn btn-danger" (click)="deleteHobby(i)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
+  <simple-notifications></simple-notifications>
 </div>
