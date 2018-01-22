@@ -1,6 +1,6 @@
 <div class="container-page">
 
-  <h2>Search for a user</h2>
+  <p>Search for a user</p>
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
@@ -10,14 +10,17 @@
       </div>
     </div>
     <div class="col-sm">
-      
+
     </div>
   </div>
 
   <div class="row" *ngIf="userActive">
     <div class="col-sm">
-      <h2>Edit User</h2>
+      <p>Edit User</p>
       <form>
+        <div class="form-group">
+          <input class="form-control" type="text" [(ngModel)]="userActive.id" name="id" placeholder="Id">
+        </div>
         <div class="form-group">
           <input class="form-control" type="text" [(ngModel)]="userActive.name" name="name" placeholder="Name">
         </div>
@@ -30,11 +33,11 @@
         <div class="form-group">
           <input class="form-control" type="text" [(ngModel)]="userActive.website" name="website" placeholder="Website">
         </div>
-        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-success" (click)="postUser(userActive)">Save</button>
       </form>
     </div>
     <div class="col-sm">
-      <h2>Interest</h2>
+      <p>Interest</p>
       <form (submit)="addHobby(hobby)">
         <div>
           <input class="form-control" type="text" [(ngModel)]="hobby" name="hobby" placeholder="Insert a interest">

@@ -9,8 +9,15 @@ export class DataService {
     console.log('DataService working...');
   }
 
-  getPosts(){
-    return this.http.get('https://jsonplaceholder.typicode.com/posts')
+  getAll(url){
+    return this.http.get(url)
+      .map(function(res){
+        return res.json();  
+      });
+  }
+
+  postData(url, user){
+    return this.http.post(url, user)
       .map(function(res){
         return res.json();  
       });

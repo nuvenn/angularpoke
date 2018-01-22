@@ -15,7 +15,7 @@ export class PostsComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getPosts().subscribe((posts) => {
+    this.dataService.getAll('https://jsonplaceholder.typicode.com/posts').subscribe((posts) => {
       this.posts = posts;
     });
   }

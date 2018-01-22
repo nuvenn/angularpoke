@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { state } from '@angular/core/src/animation/dsl';
 import { DataService } from '../../services/data.service';
-import { UsersService } from '../../services/users.service';
 import { Address } from '../../interfaces/address';
 
 @Component({
@@ -17,12 +16,18 @@ export class UserComponent implements OnInit {
   users: User[];
   userActive: User;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.title = 'User';
     this.hobbies = ['Play music', 'Rowing', 'Programming'];
-    this.usersService.getUsers().subscribe((users) => {
+    this.dataService.getAll('https://jsonplaceholder.typicode.com/users').subscribe((users) => {
+      this.users = users;
+    });
+  }
+
+  postUser(user: User) {
+    this.dataService.postData('https://jsonplaceholder.typicode.com/posts', user).subscribe((users) => {
       this.users = users;
     });
   }
