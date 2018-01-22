@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { state } from '@angular/core/src/animation/dsl';
 import { DataService } from '../../services/data.service';
+import { User } from '../../interfaces/user';
 import { Address } from '../../interfaces/address';
 import { NotificationsService, SimpleNotificationsComponent, Options} from 'angular2-notifications';
 
@@ -30,9 +31,11 @@ export class UserComponent implements OnInit {
   }
 
   putUser(user: User) {
-    this.dataService.putData('https://jsonplaceholder.typicode.com/posts/' + user.id, user).subscribe((users) => {
-      this.notificationService.success('Success update', null, {id: 123}); 
-    });
+    if(user.id && user.name && user.email){
+      this.dataService.putData('https://jsonplaceholder.typicode.com/users/' + user.id, user).subscribe((users) => {
+        this.notificationService.success('Success update', null, null); 
+      });
+    }
   }
 
   setClickedRow(user) {
@@ -42,40 +45,14 @@ export class UserComponent implements OnInit {
 
   deleteUser(index, user) {   
     this.dataService.deleteData('https://jsonplaceholder.typicode.com/posts/' + user.id).subscribe((users) => {
-      this.notificationService.success('Success delete', null, {id: 123});
+      this.notificationService.success('Success delete', null, null);
       this.users.splice(index, 1); 
       this.userActive = {};
     });
   }
 
-}
+  clearFields() {   
+    this.userActive = {};
+  }
 
-interface User {
-  id: number,
-  name: string,
-  username: string,
-  email: string,
-  address: Address2,
-  phone: string,
-  website: string,
-  company: Company
-}
-
-interface Company {
-  name: string,
-  catchPhrase: string,
-  bs: string
-}
-
-interface Address2 {
-  street: string,
-  suite: string,
-  city: string,
-  zipcode: string,
-  geo: Geo
-}
-
-interface Geo {
-  lat: string,
-  lng: string
 }

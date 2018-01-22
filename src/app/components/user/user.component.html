@@ -16,15 +16,15 @@
       </table>
     </div>
     <div class="col-sm">
-      <form>
+      <form ngNativeValidate>
         <div class="form-group">
-          <input class="form-control" type="text" [(ngModel)]="userActive.id" name="id" placeholder="Id">
+          <input class="form-control" required type="text" [(ngModel)]="userActive.id" name="id" placeholder="Id">
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" [(ngModel)]="userActive.name" name="name" placeholder="Name">
+          <input class="form-control" required type="text" [(ngModel)]="userActive.name" name="name" placeholder="Name">
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" [(ngModel)]="userActive.email" name="age" placeholder="Email">
+          <input class="form-control" required type="text" [(ngModel)]="userActive.email" name="age" placeholder="Email">
         </div>
         <div class="form-group">
           <input class="form-control" type="text" [(ngModel)]="userActive.phone" name="email" placeholder="Phone">
@@ -32,7 +32,8 @@
         <div class="form-group">
           <input class="form-control" type="text" [(ngModel)]="userActive.website" name="website" placeholder="Website">
         </div>
-        <button type="button" class="btn btn-success" (click)="putUser(userActive)">Save</button>
+        <button type="submit" class="btn btn-success" (click)="putUser(userActive)">Save</button>
+        <button type="button" class="btn btn-default" (click)="clearFields()">Limpar campos</button>
       </form>
     </div>
   </div>
