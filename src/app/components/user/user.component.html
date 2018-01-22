@@ -16,10 +16,7 @@
       </table>
     </div>
     <div class="col-sm">
-      <form ngNativeValidate>
-        <div class="form-group">
-          <input class="form-control" required type="text" [(ngModel)]="userActive.id" name="id" placeholder="Id">
-        </div>
+      <form ngNativeValidate *ngIf="userActive.id">
         <div class="form-group">
           <input class="form-control" required type="text" [(ngModel)]="userActive.name" name="name" placeholder="Name">
         </div>

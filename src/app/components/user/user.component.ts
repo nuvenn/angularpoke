@@ -12,8 +12,6 @@ import { NotificationsService, SimpleNotificationsComponent, Options} from 'angu
 })
 export class UserComponent implements OnInit {
 
-  hobby: string;
-  hobbies: string[];
   users: User[];
   userActive: {};
   userShow: boolean;
@@ -24,14 +22,13 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.userShow = false;
     this.userActive = {};
-    this.hobbies = ['Play music', 'Rowing', 'Programming'];
     this.dataService.getAll('https://jsonplaceholder.typicode.com/users').subscribe((users) => {
       this.users = users;
     });
   }
 
   putUser(user: User) {
-    if(user.id && user.name && user.email){
+    if(user.name && user.email){
       this.dataService.putData('https://jsonplaceholder.typicode.com/users/' + user.id, user).subscribe((users) => {
         this.notificationService.success('Success update', null, null); 
       });
