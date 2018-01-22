@@ -26,9 +26,10 @@ export class UserComponent implements OnInit {
     });
   }
 
-  postUser(user: User) {
-    this.dataService.postData('https://jsonplaceholder.typicode.com/posts', user).subscribe((users) => {
-      this.users = users;
+  putUser(user: User) {
+    console.log(user);
+    this.dataService.putData('https://jsonplaceholder.typicode.com/posts/' + user.id, user).subscribe((users) => {
+     
     });
   }
 

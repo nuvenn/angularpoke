@@ -16,8 +16,15 @@ export class DataService {
       });
   }
 
-  postData(url, user){
-    return this.http.post(url, user)
+  postData(url, data){
+    return this.http.post(url, data)
+      .map(function(res){
+        return res.json();  
+      });
+  }
+
+  putData(url, data){
+    return this.http.put(url, data)
       .map(function(res){
         return res.json();  
       });
