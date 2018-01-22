@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 import { state } from '@angular/core/src/animation/dsl';
 import { DataService } from '../../services/data.service';
 import { Posts } from '../../interfaces/posts';
@@ -12,12 +14,15 @@ export class PostsComponent implements OnInit {
 
   posts: Posts;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.dataService.getAll('https://jsonplaceholder.typicode.com/posts').subscribe((posts) => {
       this.posts = posts;
     });
+
+    const id: Observable<string> = this.activatedRoute.params.map(p => p.id);
+    console.log(id);
   }
 
 }

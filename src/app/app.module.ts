@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const appRoutes = [
   { path: '', component: UserComponent },
   { path: 'adm', component: AdmComponent },
-  { path: 'posts', component: PostsComponent }
+  { path: 'posts/:id', component: PostsComponent }
 ];
 
 @NgModule({

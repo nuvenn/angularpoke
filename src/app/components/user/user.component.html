@@ -9,6 +9,9 @@
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>
+              <button type="button" routerLink="/posts/{{user.id}}" class="btn bg-info text-white">See posts</button>
+            </td>
+            <td>
               <button type="button" class="btn btn-danger" (click)="deleteUser(i, user)">Delete</button>
             </td>
           </tr>
