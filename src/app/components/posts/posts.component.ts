@@ -13,16 +13,18 @@ import { Posts } from '../../interfaces/posts';
 export class PostsComponent implements OnInit {
 
   posts: Posts;
+  userId: number;
 
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.dataService.getAll('https://jsonplaceholder.typicode.com/posts').subscribe((posts) => {
+    
+    this.activatedRoute.params.subscribe(params => { this.userId = params['id']; });
+
+    this.dataService.getAll('https://jsonplaceholder.typicode.com/posts?userId=' + this.userId).subscribe((posts) => {
       this.posts = posts;
     });
 
-    const id: Observable<string> = this.activatedRoute.params.map(p => p.id);
-    console.log(id);
   }
 
 }

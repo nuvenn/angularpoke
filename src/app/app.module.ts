@@ -7,14 +7,12 @@ import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { DataService } from './services/data.service';
-import { AdmComponent } from './components/adm/adm.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes = [
   { path: '', component: UserComponent },
-  { path: 'adm', component: AdmComponent },
   { path: 'posts/:id', component: PostsComponent }
 ];
 
@@ -22,7 +20,6 @@ const appRoutes = [
   declarations: [
     AppComponent,
     UserComponent,
-    AdmComponent,
     PostsComponent
   ],
   imports: [
