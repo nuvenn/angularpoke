@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { state } from '@angular/core/src/animation/dsl';
 import { DataService } from '../../services/data.service';
+import { NotificationsService, SimpleNotificationsComponent, Options} from 'angular2-notifications';
 import { User } from '../../interfaces/user';
 import { Address } from '../../interfaces/address';
-import { NotificationsService, SimpleNotificationsComponent, Options} from 'angular2-notifications';
 
 @Component({
   selector: 'app-user',
@@ -14,13 +14,11 @@ export class UserComponent implements OnInit {
 
   users: User[];
   userActive: {};
-  userShow: boolean;
 
   constructor(private dataService: DataService,
               private notificationService: NotificationsService) { }
 
   ngOnInit() {
-    this.userShow = false;
     this.userActive = {};
     this.dataService.getAll('https://jsonplaceholder.typicode.com/users').subscribe((users) => {
       this.users = users;
@@ -37,7 +35,6 @@ export class UserComponent implements OnInit {
 
   setClickedRow(user) {
     this.userActive = user;
-    this.userShow = true;
   }
 
   deleteUser(index, user) {   

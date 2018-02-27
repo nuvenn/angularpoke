@@ -19,7 +19,7 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     
-    this.activatedRoute.params.subscribe(params => { this.userId = params['id']; });
+    this.activatedRoute.params.subscribe(params => this.userId = params['id']);
 
     this.dataService.getAll('https://jsonplaceholder.typicode.com/posts?userId=' + this.userId).subscribe((posts) => {
       this.posts = posts;
