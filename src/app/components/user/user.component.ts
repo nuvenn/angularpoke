@@ -4,6 +4,7 @@ import { DataService } from '../../services/data.service';
 import { NotificationsService, SimpleNotificationsComponent, Options} from 'angular2-notifications';
 import { User } from '../../interfaces/user';
 import { Address } from '../../interfaces/address';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-user',
@@ -16,18 +17,19 @@ export class UserComponent implements OnInit {
   userActive: {};
 
   constructor(private dataService: DataService,
-              private notificationService: NotificationsService) { }
+              private notificationService: NotificationsService) {   
+              }
 
   ngOnInit() {
     this.userActive = {};
-    this.dataService.getAll('https://jsonplaceholder.typicode.com/users').subscribe((users) => {
+    this.dataService.getAll(environment.url + '/users').subscribe((users) => {
       this.users = users;
     });
   }
 
   putUser(user: User) {
     if(user.name && user.email){
-      this.dataService.putData('https://jsonplaceholder.typicode.com/users/' + user.id, user).subscribe((users) => {
+      this.dataService.putData(environment.url + '/users/' + user.id, user).subscribe((users) => {
         this.notificationService.success('Success update', null, null); 
       });
     }
@@ -38,7 +40,7 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser(index, user) {   
-    this.dataService.deleteData('https://jsonplaceholder.typicode.com/posts/' + user.id).subscribe((users) => {
+    this.dataService.deleteData(environment.url + '/posts/' + user.id).subscribe((users) => {
       this.notificationService.success('Success delete', null, null);
       this.users.splice(index, 1); 
       this.userActive = {};

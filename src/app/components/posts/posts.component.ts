@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import { state } from '@angular/core/src/animation/dsl';
 import { DataService } from '../../services/data.service';
 import { Posts } from '../../interfaces/posts';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-posts',
@@ -21,7 +22,7 @@ export class PostsComponent implements OnInit {
     
     this.activatedRoute.params.subscribe(params => this.userId = params['id']);
 
-    this.dataService.getAll('https://jsonplaceholder.typicode.com/posts?userId=' + this.userId).subscribe((posts) => {
+    this.dataService.getAll(environment.url + '/posts?userId=' + this.userId).subscribe((posts) => {
       this.posts = posts;
     });
 
