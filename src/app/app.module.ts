@@ -6,32 +6,31 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { environment } from './../environments/environment';
 import { AppComponent } from './app.component';
-import { UserComponent } from './components/user/user.component';
+import { PokeComponent } from './components/poke/poke.component';
 import { DataService } from './services/data.service';
-import { PostsComponent } from './components/posts/posts.component';
-import { SimpleNotificationsModule } from 'angular2-notifications';
+import { DetailsComponent } from './components/details/details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes = [
-  { path: '', component: UserComponent },
-  { path: 'posts/:id', component: PostsComponent }
+  { path: '', component: PokeComponent },
+  { path: 'details/:id', component: DetailsComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    PostsComponent
+    PokeComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule,
     HttpModule
   ],
   providers: [ DataService ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

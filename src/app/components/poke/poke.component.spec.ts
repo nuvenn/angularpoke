@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
-import { UserComponent } from './user.component';
+import { PokeComponent } from './poke.component';
 import { DebugContext } from '@angular/core/src/view';
 
 describe('UserComponent', () => {
-  let component: UserComponent;
-  let fixture: ComponentFixture<UserComponent>;
+  let component: PokeComponent;
+  let fixture: ComponentFixture<PokeComponent>;
   let debugElement: DebugElement;
 
   beforeEach(async(()=>{
     TestBed.configureTestingModule({
-      declarations:[UserComponent]
+      declarations:[PokeComponent]
     }).compileComponents();
   }))
 
   beforeEach(()=>{
-    fixture =  TestBed.createComponent(UserComponent);
+    fixture =  TestBed.createComponent(PokeComponent);
     component =  fixture.componentInstance;
   })
 });

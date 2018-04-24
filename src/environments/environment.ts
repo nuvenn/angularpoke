@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  url: 'https://jsonplaceholder.typicode.com'
+  url: 'https://pokeapi.co/api/v2/pokemon/'
 };
