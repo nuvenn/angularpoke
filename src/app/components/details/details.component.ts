@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs/Observable'
 import { state } from '@angular/core/src/animation/dsl'
 import { DataService } from '../../services/data.service'
-import { Details } from '../../interfaces/details'
 import { environment } from '../../../environments/environment'
 
 @Component({
@@ -12,7 +11,7 @@ import { environment } from '../../../environments/environment'
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  details: Details
+  details: {}
   paramUrl: string
   constructor(
     private dataService: DataService,
