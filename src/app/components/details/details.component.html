@@ -6,8 +6,11 @@
       <div>
         <div class="card">
           <div class="card-block">
-            <h6 class="card-title">{{details?.id}}</h6>
-            <p class="card-text">{{details?.name}}</p>
+            <img class="card-img-top" src={{details.sprites.front_default}} alt="Card image">
+            <h6 class="card-title">id: {{details?.id}}</h6>
+            <p class="card-text">name: {{details?.name}}</p>
+            <p class="card-text">height: {{details?.height}}</p>
+            <p class="card-text">weight: {{details?.weight}}</p>
           </div>
         </div>
         <br>
