@@ -1,3 +1,5 @@
 .container-page {
-    margin: 80px 30px 30px 30px;
+    padding: 100px 20px 20px;
+    background-color: #c10000ed;
+    color: #FFF;
 }

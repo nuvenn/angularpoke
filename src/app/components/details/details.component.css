@@ -1,16 +1,14 @@
 .container-page {
     margin: 80px 30px 30px 30px;
+    color: #FFF;
+    font-weight: bolder;
 }
 
-.card {
-    max-width: 300px;
+.poke-card {
     margin: 0 auto;
+    width: 300px;
 }
 
 .card-block {
     margin: 10px 10px 10px 10px;
 }    
-
-.card-img-top {
-    max-width: 300px;
-}

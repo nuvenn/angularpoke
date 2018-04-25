@@ -1,0 +1,8 @@
+html {
+    height: 100% !important;
+    background-color: red !important;
+}
+
+.bg-red {
+    background-color: #ff4646 !important;
+}
